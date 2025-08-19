@@ -4,24 +4,59 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { Box, Globe, Grid2X2, LayoutGrid, Settings } from 'lucide-react';
+import { Box, Globe, Grid2X2, LayoutGrid, Settings, ShoppingBag, ShoppingCart, Package, Plus, Users, BarChart3, CreditCard, Truck, Megaphone, DollarSign } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
     {
         title: 'Dashboard',
-        href: '/dashboard',
+        href: '/admin/dashboard',
         icon: LayoutGrid,
     },
     {
         title: 'Products',
-        href: '/dashboard/products',
-        icon: Box,
+        href: '/admin/products',
+        icon: ShoppingBag,
     },
     {
         title: 'Categories',
-        href: '/dashboard/categories',
+        href: '/admin/categories',
         icon: Grid2X2,
+    },
+    {
+        title: 'Orders',
+        href: '/admin/orders',
+        icon: Package,
+    },
+    {
+        title: 'Users',
+        href: '/admin/users',
+        icon: Users,
+    },
+    {
+        title: 'Payments',
+        href: '/admin/payments',
+        icon: CreditCard,
+    },
+    {
+        title: 'Finance',
+        href: '/admin/finance',
+        icon: DollarSign,
+    },
+    {
+        title: 'Logistics',
+        href: '/admin/logistics',
+        icon: Truck,
+    },
+    {
+        title: 'Marketing',
+        href: '/admin/marketing',
+        icon: Megaphone,
+    },
+    {
+        title: 'Analytics',
+        href: '/admin/analytics',
+        icon: BarChart3,
     },
 ];
 
@@ -45,7 +80,7 @@ export function AppSidebar() {
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton size="lg" asChild>
-                            <Link href="/dashboard" prefetch>
+                            <Link href="/admin/dashboard" prefetch>
                                 <AppLogo />
                             </Link>
                         </SidebarMenuButton>

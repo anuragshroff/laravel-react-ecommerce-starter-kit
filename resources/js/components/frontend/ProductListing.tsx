@@ -129,7 +129,7 @@ const ProductCard: React.FC<{
 
     onAddToCart: (id: number) => void;
 }> = ({ product, onAddToCart }) => {
-    const imagePath = `/storage/${product.images[0]}`;
+    const imagePath = product.images?.[0] ? `/storage/${product.images[0]}` : 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDQwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSI0MDAiIGZpbGw9IiNGM0Y0RjYiLz48cGF0aCBkPSJNMjAwIDEwMEMxNjEuMzQzIDEwMCAxMzAgMTMxLjM0MyAxMzAgMTcwQzEzMCAyMDguNjU3IDE2MS4zNDMgMjQwIDIwMCAyNDBDMjM4LjY1NyAyNDAgMjcwIDIwOC42NTcgMjcwIDE3MEMyNzAgMTMxLjM0MyAyMzguNjU3IDEwMCAyMDAgMTAwWiIgZmlsbD0iIzlCOUJBMyIvPjxwYXRoIGQ9Ik0xNTAgMjgwSDI1MEMyNjYuNTY5IDI4MCAyODAgMjkzLjQzMSAyODAgMzEwVjMzMEgyODBIMTIwVjMxMEMxMjAgMjkzLjQzMSAxMzMuNDMxIDI4MCAxNTAgMjgwWiIgZmlsbD0iIzlCOUJBMyIvPjwvc3ZnPg==';
     const discount = product.original_price - product.price;
     const discountPercentage = Math.round((discount / product.original_price) * 100);
     return (
@@ -202,7 +202,7 @@ const ProductCard: React.FC<{
 };
 
 // Main Carousel Component
-const ProductListing = ({ products }: { products: ProductItem[] }) => {
+const ProductListing = ({ products = [] }: { products?: ProductItem[] }) => {
     // const [products, setProducts] = useState<Product[]>(sampleProducts);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [visibleProducts, setVisibleProducts] = useState(4);
@@ -231,6 +231,11 @@ const ProductListing = ({ products }: { products: ProductItem[] }) => {
     const goToNext = useCallback(() => {
         setCurrentIndex((prev) => (prev + 1 >= products.length - visibleProducts + 1 ? 0 : prev + 1));
     }, [products.length, visibleProducts]);
+
+    // Early return if no products
+    if (!products || products.length === 0) {
+        return <div className="text-center py-8">No products available</div>;
+    }
 
     const goToPrev = () => {
         setCurrentIndex((prev) => (prev - 1 < 0 ? Math.max(0, products.length - visibleProducts) : prev - 1));

@@ -242,35 +242,35 @@ export default function ShopHeader() {
                                         <Input placeholder="Search" className="pl-9" />
                                     </div>
                                     <nav className="grid gap-2">
-                                        <Link href="#" className="flex items-center justify-between py-2 text-base font-medium">
-                                            New Arrivals <ChevronDown className="h-4 w-4" />
+                                        <Link href={route('home')} className="py-2 text-base font-medium">
+                                            Home
                                         </Link>
-                                        <Link href="#" className="flex items-center justify-between py-2 text-base font-medium">
-                                            Women <ChevronDown className="h-4 w-4" />
+                                        <Link href={route('products')} className="py-2 text-base font-medium">
+                                            All Products
                                         </Link>
-                                        <Link href="#" className="flex items-center justify-between py-2 text-base font-medium">
-                                            Men <ChevronDown className="h-4 w-4" />
+                                        <Link href="#" className="py-2 text-base font-medium">
+                                            Categories
                                         </Link>
-                                        <Link href="#" className="flex items-center justify-between py-2 text-base font-medium">
-                                            Accessories <ChevronDown className="h-4 w-4" />
+                                        <Link href="#" className="py-2 text-base font-medium">
+                                            New Arrivals
                                         </Link>
-                                        <Link href="#" className="flex items-center justify-between py-2 text-base font-medium">
-                                            Collections <ChevronDown className="h-4 w-4" />
+                                        <Link href="#" className="py-2 text-base font-medium">
+                                            Best Sellers
                                         </Link>
                                     </nav>
                                     <div className="mt-6 border-t pt-4">
                                         <nav className="grid gap-1">
-                                            <Link href="#" className="py-2 text-sm">
-                                                Account
+                                            <Link href={route('dashboard')} className="py-2 text-sm">
+                                                My Account
+                                            </Link>
+                                            <Link href={route('orders')} className="py-2 text-sm">
+                                                My Orders
+                                            </Link>
+                                            <Link href={route('create-product')} className="py-2 text-sm">
+                                                Sell Products
                                             </Link>
                                             <Link href="#" className="py-2 text-sm">
-                                                Wishlist
-                                            </Link>
-                                            <Link href="#" className="py-2 text-sm">
-                                                Order Tracking
-                                            </Link>
-                                            <Link href="#" className="py-2 text-sm">
-                                                Help & Contact
+                                                Help & Support
                                             </Link>
                                         </nav>
                                     </div>
@@ -278,6 +278,32 @@ export default function ShopHeader() {
                             </SheetContent>
                         </Sheet>
                     </div>
+                </div>
+            </div>
+            
+            {/* Main Navigation Bar */}
+            <div className="hidden md:block border-t bg-white/95 backdrop-blur-sm">
+                <div className="container mx-auto px-4 md:px-6">
+                    <nav className="flex items-center justify-center space-x-8 py-3">
+                        <Link href={route('home')} className="text-sm font-medium text-gray-700 hover:text-orange-500 transition-colors">
+                            Home
+                        </Link>
+                        <Link href={route('products')} className="text-sm font-medium text-gray-700 hover:text-orange-500 transition-colors">
+                            All Products
+                        </Link>
+                        <Link href="#" className="text-sm font-medium text-gray-700 hover:text-orange-500 transition-colors">
+                            Categories
+                        </Link>
+                        <Link href="#" className="text-sm font-medium text-gray-700 hover:text-orange-500 transition-colors">
+                            New Arrivals
+                        </Link>
+                        <Link href="#" className="text-sm font-medium text-gray-700 hover:text-orange-500 transition-colors">
+                            Best Sellers
+                        </Link>
+                        <Link href="#" className="text-sm font-medium text-gray-700 hover:text-orange-500 transition-colors">
+                            Sale
+                        </Link>
+                    </nav>
                 </div>
             </div>
         </header>

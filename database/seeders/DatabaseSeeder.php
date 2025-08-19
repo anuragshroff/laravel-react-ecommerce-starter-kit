@@ -43,5 +43,9 @@ class DatabaseSeeder extends Seeder
         foreach($categories as $category){
             Category::create($category);
         }
+        
+        $this->call([
+            ProductSeeder::class,
+        ]);
     }
 }

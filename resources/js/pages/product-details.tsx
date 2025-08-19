@@ -124,7 +124,7 @@ const ProductDetails = ({ product, similarProducts }: { product: Product; simila
                     <div className="space-y-6">
                         <div className="relative aspect-square overflow-hidden rounded-xl bg-gray-100">
                             <img
-                                src={`/storage/${product.images[selectedImage]}`}
+                                src={product.images?.[selectedImage] ? `/storage/${product.images[selectedImage]}` : 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDQwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSI0MDAiIGZpbGw9IiNGM0Y0RjYiLz48cGF0aCBkPSJNMjAwIDEwMEMxNjEuMzQzIDEwMCAxMzAgMTMxLjM0MyAxMzAgMTcwQzEzMCAyMDguNjU3IDE2MS4zNDMgMjQwIDIwMCAyNDBDMjM4LjY1NyAyNDAgMjcwIDIwOC42NTcgMjcwIDE3MEMyNzAgMTMxLjM0MyAyMzguNjU3IDEwMCAyMDAgMTAwWiIgZmlsbD0iIzlCOUJBMyIvPjxwYXRoIGQ9Ik0xNTAgMjgwSDI1MEMyNjYuNTY5IDI4MCAyODAgMjkzLjQzMSAyODAgMzEwVjMzMEgyODBIMTIwVjMxMEMxMjAgMjkzLjQzMSAxMzMuNDMxIDI4MCAxNTAgMjgwWiIgZmlsbD0iIzlCOUJBMyIvPjwvc3ZnPg=='}
                                 alt={product.name}
                                 className="object-cover transition-all duration-300 hover:scale-105"
                                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -132,7 +132,7 @@ const ProductDetails = ({ product, similarProducts }: { product: Product; simila
                         </div>
 
                         <div className="flex space-x-4 overflow-auto pb-2">
-                            {product.images.map((image, index) => {
+                            {product.images?.map((image, index) => {
                                 const imagePath = `/storage/${image}`;
                                 return (
                                     <button
@@ -145,7 +145,7 @@ const ProductDetails = ({ product, similarProducts }: { product: Product; simila
                                         <img src={imagePath} alt={`${product.name} - View ${index + 1}`} className="object-cover" sizes="80px" />
                                     </button>
                                 );
-                            })}
+                            }) || []}
                         </div>
                     </div>
 
@@ -195,7 +195,7 @@ const ProductDetails = ({ product, similarProducts }: { product: Product; simila
                             <div>
                                 <h3 className="text-sm font-medium text-gray-900">Color</h3>
                                 <div className="mt-2 flex space-x-3">
-                                    {product.colors.map((colorStr, index) => {
+                                    {product.colors?.map((colorStr, index) => {
                                         const color = {
                                             name: colorStr.split('=')[0],
                                             value: colorStr.split('=')[1],
@@ -256,7 +256,7 @@ const ProductDetails = ({ product, similarProducts }: { product: Product; simila
                         <div>
                             <h3 className="text-sm font-medium text-gray-900">Features</h3>
                             <ul className="mt-2 space-y-2">
-                                {product.features.map((feature, index) => {
+                                {product.features?.map((feature, index) => {
                                     return (
                                         <li key={index} className="flex items-start">
                                             <Check className="mr-2 h-5 w-5 flex-shrink-0 text-green-500" />

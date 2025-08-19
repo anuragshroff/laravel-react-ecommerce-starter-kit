@@ -55,13 +55,12 @@ export default function Welcome() {
                                         </span>
                                     </span>
                                     <span>
-                                        Read the
+                                        Browse our
                                         <Link
-                                            href={route('about')}
-                                            target="_blank"
+                                            href={route('products')}
                                             className="ml-1 inline-flex items-center space-x-1 font-medium text-[#f53003] underline underline-offset-4 dark:text-[#FF4433]"
                                         >
-                                            <span>About Us</span>
+                                            <span>Product Catalog</span>
                                             <svg
                                                 width={10}
                                                 height={11}
