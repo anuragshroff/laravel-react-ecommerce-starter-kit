@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Product extends Model
 {
     protected $fillable =[
+        'artisan_id',
         'name','slug','price','original_price',
             'rating',
             'review_count',
@@ -35,6 +36,10 @@ class Product extends Model
     ];
     public function category() : BelongsTo {
         return $this->belongsTo(Category::class);
+    }
+
+    public function artisan() : BelongsTo {
+        return $this->belongsTo(User::class, 'artisan_id');
     }
 
     public function scopeSimilar($query,$productId){
